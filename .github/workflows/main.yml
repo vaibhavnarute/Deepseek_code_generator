@@ -17,4 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://vaibhav873:$HF_TOKEN@huggingface.co/spaces/vaibhav873/Deep main
+        run: git push --force https://Narute:$HF_TOKEN@huggingface.co/spaces/Narute/deepseek main
