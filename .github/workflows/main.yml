@@ -13,12 +13,17 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          lfs: true  # If using Large File Storage
+          lfs: true
 
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install -y curl
+          sudo apt install -y curl python3 python3-pip
+
+      - name: Install Streamlit and Required Packages
+        run: |
+          pip3 install --upgrade pip
+          pip3 install streamlit httpx langchain_ollama
 
       - name: Download and Install Ollama
         run: |
@@ -33,4 +38,4 @@ jobs:
           HF_USERNAME: ${{ secrets.HF_USERNAME }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          streamlit run app.py --server.port 8501 --server.headless true
+          python3 -m streamlit run app.py --server.port 8501 --server.headless true
